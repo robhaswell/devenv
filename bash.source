@@ -1,0 +1,3 @@
+alias devhere='docker run -ti -v $(pwd):/$(basename $(pwd)) -w /$(basename $(pwd)) robhaswell/devenv bash'
+
+# vim: syntax=bash:
