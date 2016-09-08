@@ -1,0 +1,1 @@
+Recover-0.16.vmb: call delete('/Users/rob/.vim/plugin/recover.vim')|call delete('/Users/rob/.vim/autoload/recover.vim')|call delete('/Users/rob/.vim/doc/recoverPlugin.txt')
