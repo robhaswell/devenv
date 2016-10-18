@@ -9,15 +9,14 @@ if [ "$PS1" ]; then
 
     # enable color support of ls and also add handy aliases
 
-	if [ `uname` = "FreeBSD" ]; then # probably on the cluster
-		alias ls='gnuls --color=always'
-	elif [ `uname` = "Darwin" ]; then
-        export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+    if [ `uname` = "FreeBSD" ]; then # probably on the cluster
+        alias ls='gnuls --color=always'
+    elif [ `uname` = "Darwin" ]; then
         alias ls='ls -G'
     else # Linux
         eval `dircolors`
-		alias ls='ls --color=always'
-	fi
+        alias ls='ls --color=always'
+    fi
 
     # set a fancy prompt
     COLOR1="\[\033[1;36m\]" # light cyan
@@ -26,39 +25,26 @@ if [ "$PS1" ]; then
     COLOR4="\[\033[1;34m\]" # light blue
     COLOR5="\[\033[1;32m\]" # green
     COLOR6="\[\033[1;31m\]" # red
-	DEFAULTCOLOR="\[\033[0m\]" # default
+    DEFAULTCOLOR="\[\033[0m\]" # default
 
     PS1="$COLOR6\u$COLOR3@$COLOR4\h$DEFAULTCOLOR:\w"'$(__git_ps1 " (%s)" 2> /dev/null)\n\$ '
     TITLEBAR='\[\033]0;\u@\h:\w\007\]'
 
-	export EDITOR=vim
-	export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+    export EDITOR=vim
+    export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 
-	if [ "$TERM" = "linux" ]; then
-		export PS1=$PS1
-	else
-		export PS1=$PS1$TITLEBAR
-	fi
+    if [ "$TERM" = "linux" ]; then
+        export PS1=$PS1
+    else
+        export PS1=$PS1$TITLEBAR
+    fi
 
     shopt -s histappend
 fi
 
-# set PATH so it includes user's private bin if it exists
-
-if [ -d ~/mybin ] ; then
-    PATH="~/mybin:${PATH}"
-fi
-
+# set PATH so it includes my private bin if it exists
 if [ -d ~/bin ] ; then
     PATH="~/bin:${PATH}"
-fi
-
-#if [ -d /pub/garnome/bin ] ; then
-#    PATH="/pub/garnome/bin:${PATH}"
-#fi
-
-if [ -d /sbin ] ; then
-    PATH="/sbin:${PATH}"
 fi
 
 # Completion
